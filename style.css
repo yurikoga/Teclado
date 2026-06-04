@@ -1,0 +1,117 @@
+/* Configurações Globais */
+:root {
+    --bg-color: #e3e8f1; /* Cinza claro do fundo */
+    --text-color: #3e4453; /* Texto escuro sutil */
+    --display-text-color: #1a73e8; /* Azul para o texto do display */
+    
+    /* Sombras Neumórficas Elevadas */
+    --raised-shadow-dark: rgba(163, 177, 198, 0.6);
+    --raised-shadow-light: rgba(255, 255, 255, 0.9);
+    
+    /* Sombras Neumórficas Pressionadas (Incrustadas) */
+    --pressed-shadow-dark: rgba(163, 177, 198, 0.4);
+    --pressed-shadow-light: rgba(255, 255, 255, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', sans-serif; /* Poppins é opcional, mas bem próximo */
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Classes de Utilidade Neumórfica */
+.neu-raised {
+    box-shadow: 6px 6px 12px var(--raised-shadow-dark), 
+               -6px -6px 12px var(--raised-shadow-light);
+}
+
+.neu-pressed {
+    box-shadow: inset 6px 6px 12px var(--pressed-shadow-dark), 
+               inset -6px -6px 12px var(--pressed-shadow-light);
+}
+
+/* Container Principal */
+.wrapper {
+    background-color: var(--bg-color);
+    width: 700px;
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    transition: all 0.2s;
+}
+
+/* Área de Digitação (Display) */
+.display-container {
+    background-color: var(--bg-color);
+    width: 100%;
+    height: 140px;
+    border-radius: 12px;
+    padding: 20px 25px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: hidden; /* Evita que o texto saia */
+}
+
+.display-text {
+    font-size: 26px;
+    color: var(--display-text-color);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    word-break: break-all; /* Quebra o texto se for muito longo */
+    display: block;
+}
+
+/* Teclado */
+.keyboard {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Espaço entre as teclas */
+}
+
+/* Teclas */
+.key {
+    background-color: var(--bg-color);
+    width: calc(100% / 10 - 15px); /* Divide em 10, subtrai o gap */
+    max-width: 50px; /* Limite de tamanho */
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none; /* Evita seleção de texto */
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.1s;
+}
+
+/* Efeito de Clique da Tecla */
+.key:active, .key.active {
+    box-shadow: inset 6px 6px 12px var(--pressed-shadow-dark), 
+               inset -6px -6px 12px var(--pressed-shadow-light);
+    transform: scale(0.98);
+}
+
+/* Tecla SPACE (Espaço) */
+.key.space {
+    width: 60%; /* Ocupa mais espaço */
+    max-width: 400px;
+    margin-top: 10px; /* Espaçamento extra */
+    letter-spacing: 1px;
+}
